@@ -1,3 +1,5 @@
-const name = 'humam'
+const greatName = (name) => {
+    console.log(`Hello ${name} you have a great name .... ${name} hahaah this is awesome :)`)
+}
 
-console.log(name)
+greatName("humam")
