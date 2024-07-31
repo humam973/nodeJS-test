@@ -6,19 +6,6 @@ const server = http.createServer((req , res) => {
 
     res.setHeader('contype-Type', 'text/plain')
 
-// the _ its lodash and randome method selecting randome num betwen the velue that i specified
-    console.log(_.random(20 ,30))
-// .once method make thing run only one time 
-    const fun = _.once(() => {
-        console.log('Helloooo')
-    }
-)
-fun()
-fun()
-fun()
-
-
-
     let path = './view/'
 
     switch(req.url){
