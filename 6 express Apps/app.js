@@ -1,4 +1,5 @@
 const express = require("express")
+const morgan = require('morgan')
 
 // express app
 const app = express() ;
@@ -21,6 +22,27 @@ const notes = [
     {title : 'Project Meeting Summary' , snippet : 'Key updates and action items from today`s project meeting.'} ,
     {title : 'Grocery List for the Week' , snippet : 'Milk, eggs, bread, chicken, vegetables, fruits, pasta.'} 
 ]
+
+// // use method made whatever the func. inside run every time a request made
+
+// app.use((req , res , next) => {
+//     console.log('new request made :')
+//     console.log('host : ' , req.hostname)
+//     console.log('path : ' , req.path)
+//     console.log('method : ' , req.method)
+// // the next method tells the use method that after whatever the func. that you run let the server contune read the code
+//     next()
+// })
+
+// app.use((req , res , next) => {
+//     console.log('this is the next meddleware')
+//     next()
+// })
+
+// 3 part meddlware
+app.use(express.static('public'))
+app.use(morgan('dev'))
+
 app.get('/' , (req , res) => {
     // res.send('<p>hi to HOME page </p>') ;
     // res.sendFile('./views/index.html' , { root : __dirname } )
@@ -30,13 +52,13 @@ app.get('/' , (req , res) => {
 app.get('/about' , (req , res) => {
     // res.send('<p>hi to ABOUT page</p>') ;
     // res.sendFile('./views/about.html' , { root : __dirname } )
-    res.render('about' , {title : 'about' , notes})
+    res.render('about' , {title : 'about' })
 })
 
 app.get('/notes/create' , (req , res) => {
     // res.send('<p>hi to ABOUT page</p>') ;
     // res.sendFile('./views/about.html' , { root : __dirname } )
-    res.render('createNote' , {title : 'creating' , notes})
+    res.render('createNote' , {title : 'creating' })
 })
 
 // // redirect
